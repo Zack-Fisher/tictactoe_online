@@ -1,0 +1,24 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/backend.js",
+  "scripts": {
+    "build": "webpack --config webpack.config.js",
+    "start": "node dist/backend.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/preset-env": "^7.21.5",
+    "babel": "^6.23.0",
+    "babel-loader": "^9.1.2",
+    "express": "^4.18.2",
+    "uuid": "^9.0.0",
+    "webpack": "^5.84.1"
+  },
+  "devDependencies": {
+    "webpack-cli": "^5.1.1"
+  }
+}

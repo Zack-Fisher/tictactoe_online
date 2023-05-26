@@ -1,0 +1,137 @@
+[gd_scene load_steps=5 format=3 uid="uid://cnstqjqh2ud41"]
+
+[ext_resource type="Shader" path="res://scenes/Wavy.gdshader" id="1_1lluk"]
+[ext_resource type="Script" path="res://scenes/Game.gd" id="1_3itma"]
+[ext_resource type="Texture2D" uid="uid://cbeftu1cuew0s" path="res://icon.svg" id="1_tk3k0"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_m885c"]
+shader = ExtResource("1_1lluk")
+shader_parameter/speed = 0.113
+shader_parameter/direction = Vector2(1.621, -0.483)
+shader_parameter/tiling = Vector2(17.694, 9.702)
+
+[node name="Game" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3itma")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_m885c")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_tk3k0")
+stretch_mode = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+
+[node name="PlayerSide" type="PanelContainer" parent="PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/HBoxContainer/PlayerSide"]
+layout_mode = 2
+
+[node name="PlayerMoveDisplay" type="PanelContainer" parent="PanelContainer/HBoxContainer/PlayerSide/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.72
+
+[node name="PlayerMoveSelector" type="PanelContainer" parent="PanelContainer/HBoxContainer/PlayerSide/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/HBoxContainer/PlayerSide/VBoxContainer/PlayerMoveSelector"]
+layout_mode = 2
+
+[node name="Rock" type="Button" parent="PanelContainer/HBoxContainer/PlayerSide/VBoxContainer/PlayerMoveSelector/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Rock
+"
+
+[node name="Paper" type="Button" parent="PanelContainer/HBoxContainer/PlayerSide/VBoxContainer/PlayerMoveSelector/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Paper
+"
+
+[node name="Scissors" type="Button" parent="PanelContainer/HBoxContainer/PlayerSide/VBoxContainer/PlayerMoveSelector/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Scissors"
+
+[node name="ContentPanel" type="PanelContainer" parent="PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.59
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/HBoxContainer/ContentPanel"]
+layout_mode = 2
+
+[node name="PlayerInfoContainer" type="PanelContainer" parent="PanelContainer/HBoxContainer/ContentPanel/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="GeneralInfoContainer" type="PanelContainer" parent="PanelContainer/HBoxContainer/ContentPanel/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.81
+
+[node name="OpponentInfoContainer" type="PanelContainer" parent="PanelContainer/HBoxContainer/ContentPanel/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="OpponentSide" type="PanelContainer" parent="PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/HBoxContainer/OpponentSide"]
+layout_mode = 2
+
+[node name="OpponentMoveDisplay" type="PanelContainer" parent="PanelContainer/HBoxContainer/OpponentSide/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.72
+
+[connection signal="pressed" from="PanelContainer/HBoxContainer/PlayerSide/VBoxContainer/PlayerMoveSelector/VBoxContainer/Rock" to="." method="_on_rock_pressed"]
+[connection signal="pressed" from="PanelContainer/HBoxContainer/PlayerSide/VBoxContainer/PlayerMoveSelector/VBoxContainer/Paper" to="." method="_on_paper_pressed"]
+[connection signal="pressed" from="PanelContainer/HBoxContainer/PlayerSide/VBoxContainer/PlayerMoveSelector/VBoxContainer/Scissors" to="." method="_on_scissors_pressed"]
